@@ -1,0 +1,16 @@
+{
+"characters": [
+{ "name":"大" , "level":1, "words":["大山","大人"] },
+{ "name":"小" , "level":1, "words":["小山","小人"] },
+{ "name":"天" , "level":1, "words":["大山","大人"] },
+{ "name":"地" , "level":1, "words":["大山","大人"] },
+{ "name":"东" , "level":1, "words":["大山","大人"] },
+{ "name":"南" , "level":1, "words":["大山","大人"] },
+{ "name":"西" , "level":1, "words":["大山","大人"] },
+{ "name":"北" , "level":1, "words":["大山","大人"] },
+{ "name":"NAN" , "level":1, "words":["大山","大人"] },
+{ "name":"大" , "level":1, "words":["大山","大人"] },
+{ "name":"大" , "level":1, "words":["大山","大人"] },
+{ "name":"大" , "level":1, "words":["大山","大人"] }
+]
+}
