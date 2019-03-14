@@ -14,7 +14,8 @@ var displayCharacter = document.getElementById("displayCharacter");
 //.innerHTML=characterObjs.characters[0].name;
 var displayWords = document.getElementById("displayWords");
 //.innerHTML=characterObjs.characters[0].words;
-var id = 0;
+var currID = 0;
+var prevID = 0;
 var length = 0;
 
 
@@ -29,17 +30,23 @@ request.onload = function() {
 var nextButton = document.getElementById('nextButton');
 var prevButton = document.getElementById('prevButton');
 var displayContent = document.getElementById('displayContent');
-
+nextButton.style.fontSize="80px";
+prevButton.style.fontSize="80px";
 
 nextButton.addEventListener('click', () => {
   console.log("click next");
-  id = Math.round(Math.random()*length);
+  prevID = currID;
+  currID = Math.round(Math.random()*length);
   displayCharacter.style.fontSize="400px";
-  displayCharacter.innerHTML=characterObjs.characters[id].name;
-  displayWords.innerHTML=characterObjs.characters[id].words;
+  displayCharacter.innerHTML=characterObjs.characters[currID].name;
+  displayWords.innerHTML=characterObjs.characters[currID].words;
   displayWords.style.fontSize="100px";
 });
 
 prevButton.addEventListener('click', () => {
   console.log("click prev");
+  displayCharacter.style.fontSize="400px";
+  displayCharacter.innerHTML=characterObjs.characters[prevID].name;
+  displayWords.innerHTML=characterObjs.characters[prevID].words;
+  displayWords.style.fontSize="100px";
 });
