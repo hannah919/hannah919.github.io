@@ -13,6 +13,7 @@ var characterObjs;
 var displayCharacter = document.getElementById("displayCharacter");
 //.innerHTML=characterObjs.characters[0].name;
 var displayWords = document.getElementById("displayWords");
+
 //.innerHTML=characterObjs.characters[0].words;
 var currID = 0;
 var prevID = 0;
@@ -30,8 +31,10 @@ request.onload = function() {
 var nextButton = document.getElementById('nextButton');
 var prevButton = document.getElementById('prevButton');
 var displayContent = document.getElementById('displayContent');
+var characterLevel = document.getElementById("characters_level");
 nextButton.style.fontSize="80px";
 prevButton.style.fontSize="80px";
+characterLevel.style.fontSize="80px";
 
 nextButton.addEventListener('click', () => {
   console.log("click next");
@@ -40,6 +43,7 @@ nextButton.addEventListener('click', () => {
   displayCharacter.style.fontSize="400px";
   displayCharacter.innerHTML=characterObjs.characters[currID].name;
   displayWords.innerHTML=characterObjs.characters[currID].words;
+  characterLevel.innerHTML=characterObjs.characters[currID].level;
   displayWords.style.fontSize="100px";
 });
 
