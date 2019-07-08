@@ -30,10 +30,13 @@ request.onload = function() {
 
 var nextButton = document.getElementById('nextButton');
 var prevButton = document.getElementById('prevButton');
+var ttsButton = document.getElementById('tts');
+var playButton = document.getElementById('play');
 var displayContent = document.getElementById('displayContent');
 var characterLevel = document.getElementById("characters_level");
 nextButton.style.fontSize="80px";
 prevButton.style.fontSize="80px";
+playButton.style.fontSize="80px";
 characterLevel.style.fontSize="80px";
 
 nextButton.addEventListener('click', () => {
@@ -45,6 +48,9 @@ nextButton.addEventListener('click', () => {
   displayWords.innerHTML=characterObjs.characters[currID].words;
   characterLevel.innerHTML=characterObjs.characters[currID].level;
   displayWords.style.fontSize="100px";
+  //cancel();
+  console.log("prepare tts");
+  tts();
 });
 
 prevButton.addEventListener('click', () => {
@@ -53,4 +59,66 @@ prevButton.addEventListener('click', () => {
   displayCharacter.innerHTML=characterObjs.characters[prevID].name;
   displayWords.innerHTML=characterObjs.characters[prevID].words;
   displayWords.style.fontSize="100px";
+  //cancel();
+  console.log("prepare tts");
+  tts();
 });
+
+playButton.addEventListener('click', () => {
+  displayCharacter.style.fontSize="400px";
+  console.log("click play");
+  if (audio === null) {
+    alert('请先点击合成')
+  } else {
+    audio.play();
+  }
+});
+
+// 合成按钮
+function tts() {
+  //let text = document.getElementById('text').value;
+  playButton.innerText = '准备中';
+
+  // 调用语音合成接口
+  // 参数含义请参考 https://ai.baidu.com/docs#/TTS-API/41ac79a6
+  audio = btts({
+    tex: characterObjs.characters[currID].name,
+    tok: '24.80d6637161724cdf5e4ea81fe494e23b.2592000.1565179850.282335-16738174',
+    spd: 1,
+    pit: 5,
+    vol: 15,
+    per: 4
+  }, {
+    volume: 0.5,
+    autoDestory: true,
+    timeout: 10000,
+    hidden: true,
+    onInit: function (htmlAudioElement) {
+
+    },
+    onSuccess: function(htmlAudioElement) {
+        audio = htmlAudioElement;
+        playButton.innerText = '播放';
+    },
+    onError: function(text) {
+        alert(text)
+    },
+    onTimeout: function () {
+        alert('timeout')
+    }
+  });
+}
+
+// 取消按钮
+function cancel() {
+  if (audio === null) {
+    alert('请先点击合成')
+  } else {
+    audio.pause();
+    document.body.removeChild(audio);
+    audio = null;
+    playBtn.innerText = '准备中';
+  }
+}
+
+

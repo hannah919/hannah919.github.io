@@ -7,15 +7,21 @@
 <body>
 <div id="container" style="width:800px; height:800px">
   <div id=displayCharacter style="text-align:center; font-size:300%; "><font face="楷书"></font> </div>
-  <div id=displayWords style="text-align:center; "><font face="楷书"></font> </div>
+  
+  <!--<div id=displayWords style="text-align:center; "><font face="楷书"></font> </div>-->
+  <div id=displayWords style="text-align:center; "><font-family: 'MicrosoftYaHei'></font-family> </div>
   <div style="float:left; padding-top: 50px">
     <button type="button" id="prevButton" > Previous </button>
   </div>
   <div style="float:right; padding-top: 50px">
     <button type="button" id="nextButton" > Next </button>
   </div>
+  <div style="float:center; padding-top: 50px">
+    <button type="button" id="play" > Play </button>
+  </div>
   <div id=characters_level style="float:center; padding-top: 50px; padding-left: 10px;"></div>
 </div>
 <script type="text/javascript" src="single_character/single_character.js"></script>
+<script type="text/javascript" src="single_character/baidu_tts_cors.js"></script>
 </body>
 </html>
